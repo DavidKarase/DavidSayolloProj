@@ -14,7 +14,7 @@ namespace Sayollo.Core
         private const string ERROR_FORMAT = "Sayollo.AdsManager.{0}: {1}";
         private const string URL = "https://6u3td6zfza.execute-api.us-east-2.amazonaws.com/prod/ad/vast";
 
-        private XmlService xmlService;
+        private readonly XmlService xmlService;
 
         [RuntimeInitializeOnLoadMethod]
         private static void OnRuntimeMethodLoad()
@@ -26,7 +26,6 @@ namespace Sayollo.Core
         {
             SingleManager.Register<IAdsManager>(this);
             xmlService = new XmlService();
-            GetAd(OnAdArrive);//TODO remove
         }
 
         public async void GetAd(AdCallbeck adCallbeck)
@@ -60,12 +59,6 @@ namespace Sayollo.Core
                     response.Close();
                 return null;
             }
-        }
-
-        //TODO remove
-        private static void OnAdArrive(VastData vastData)
-        {
-            Debug.LogError(vastData.Ad.InLine.Creatives.Creative.Linear.MediaFiles.MediaFile);
         }
     }
 }
