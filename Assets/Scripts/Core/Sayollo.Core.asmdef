@@ -1,0 +1,15 @@
+{
+    "name": "Sayollo.Core",
+    "references": [
+        "GUID:061fd0e8c2546bd4dbe5d7ccf5ad2425"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
