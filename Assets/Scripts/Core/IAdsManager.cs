@@ -2,6 +2,6 @@
 {
     public interface IAdsManager
     {
-        void GetAd(AdCallbeck adCallbeck);
+        void Register(IBaseAdComponent adComponent);
     }
 }

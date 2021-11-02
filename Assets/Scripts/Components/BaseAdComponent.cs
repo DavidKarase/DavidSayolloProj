@@ -1,22 +1,31 @@
 ﻿using Sayollo.Core;
 using Sayollo.Services;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sayollo.Components
 {
-    public class BaseAdComponent : MonoBehaviour
+    public class BaseAdComponent : MonoBehaviour, IBaseAdComponent
     {
         private IAdsManager adsManager;
+
+        [SerializeField]
+        private RawImage rawImage;
 
         private void Start()
         {
             adsManager = SingleManager.Get<IAdsManager>();
-            adsManager.GetAd(OnAdArrive);
+            adsManager.Register(this);
         }
 
-        private void OnAdArrive(VastData vastData)
+        public void SetTexture(RenderTexture texture)
         {
-            Debug.LogError(vastData.Ad.InLine.Creatives.Creative.Linear.MediaFiles.MediaFile);
+            rawImage.texture = texture;
+        }
+
+        private void OnDestroy()
+        {
+            //adsManager.Unregister(this);//TODO
         }
     }
 }
