@@ -1,3 +1,16 @@
-﻿{
-	"name": "Sayollo.Components"
+{
+    "name": "Sayollo.Components",
+    "references": [
+        "GUID:061fd0e8c2546bd4dbe5d7ccf5ad2425",
+        "GUID:1541e9ed88524f041b9899bc023eaf40"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
