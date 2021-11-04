@@ -9,7 +9,7 @@ using UnityEngine.Video;
 
 namespace Sayollo.Core
 {
-    public class AdsManager : IAdsManager
+    internal class AdsManager : IAdsManager
     {
         #region --- Members ---
         private const string LOG_FORMAT = "Sayollo.AdsManager.{0}: {1}";

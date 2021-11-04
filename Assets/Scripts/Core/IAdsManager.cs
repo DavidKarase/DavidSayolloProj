@@ -1,6 +1,6 @@
 ﻿namespace Sayollo.Core
 {
-    public interface IAdsManager
+    internal interface IAdsManager
     {
         void Register(IBaseAdComponent adComponent);
     }
