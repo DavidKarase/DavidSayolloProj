@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using UnityEngine;
 
-public class ProductData : MonoBehaviour
+public class ProductData
 {
     [JsonProperty("title")]
     public string Title;
@@ -29,4 +28,9 @@ public class ProductData : MonoBehaviour
 
     [JsonProperty("error_code")]
     public int ErrorCode;
+
+    public override string ToString()
+    {
+        return string.Format("Titel: {0}, Name: {1}", Title, ItemName);
+    }
 }

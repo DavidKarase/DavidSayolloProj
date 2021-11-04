@@ -16,6 +16,7 @@ namespace Sayollo.Core
         private readonly JsonService jsonService;
 
         private ProductData product;
+        private StoreView storeView;
         private bool isStoreOpen = false;
         #endregion
 
@@ -38,6 +39,8 @@ namespace Sayollo.Core
         private async void GetProduct()
         {
             product = await Task.Run(AskServerForProduct);
+            if (product != null)
+                Debug.LogFormat(LOG_FORMAT, "GetProduct", "Recive new product: " + product);
         }
 
         private ProductData AskServerForProduct()
@@ -66,14 +69,28 @@ namespace Sayollo.Core
         }
         #endregion
 
-        #region --- Open Store ---
+        #region --- Store ---
         public void OpenStore()
         {
             if (isStoreOpen)
                 return;
-            GameObject store = Resources.Load(STORE_OBJECT) as GameObject;
-            UnityEngine.Object.Instantiate(store);
+            if (!storeView)
+            {
+                GameObject store = Resources.Load(STORE_OBJECT) as GameObject;
+                UnityEngine.Object.Instantiate(store);
+                storeView = store.GetComponent<StoreView>();
+            }
+            storeView.SetData(product);
+            storeView.gameObject.SetActive(true);
             isStoreOpen = true;
+            Debug.LogFormat(LOG_FORMAT, "OpenStore", "Store is open");
+        }
+
+        public void CloseStore()
+        {
+            storeView.gameObject.SetActive(true);
+            isStoreOpen = false;
+            Debug.LogFormat(LOG_FORMAT, "CloseStore", "Store is close");
         }
         #endregion
     }
