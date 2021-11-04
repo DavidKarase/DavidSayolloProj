@@ -1,21 +1,22 @@
 ﻿using Sayollo.Services;
 using System;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Sayollo.Core
 {
-    public class StoreManager
+    public class StoreManager : IStoreManager
     {
         #region --- Members ---
         private const string LOG_FORMAT = "Sayollo.AdsManager.{0}: {1}";
         private const string URL = "https://6u3td6zfza.execute-api.us-east-2.amazonaws.com/prod/v1/gcom/ad";
+        private const string STORE_OBJECT = "Store";
 
         private readonly JsonService jsonService;
 
         private ProductData product;
+        private bool isStoreOpen = false;
         #endregion
 
         #region --- Init ---
@@ -27,7 +28,7 @@ namespace Sayollo.Core
 
         private StoreManager()
         {
-            SingleManager.Register(this);
+            SingleManager.Register<IStoreManager>(this);
             jsonService = new JsonService();
             GetProduct();
         }
@@ -62,6 +63,17 @@ namespace Sayollo.Core
                     httpClient.Dispose();
                 return null;
             }
+        }
+        #endregion
+
+        #region --- Open Store ---
+        public void OpenStore()
+        {
+            if (isStoreOpen)
+                return;
+            GameObject store = Resources.Load(STORE_OBJECT) as GameObject;
+            UnityEngine.Object.Instantiate(store);
+            isStoreOpen = true;
         }
         #endregion
     }
