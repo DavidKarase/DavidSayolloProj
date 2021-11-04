@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Sayollo.Components
 {
+    [AddComponentMenu("Sayollo/Ad/Ad2D")]
     [RequireComponent(typeof(RawImage))]
     public class Ad2D : BaseAdComponent
     {

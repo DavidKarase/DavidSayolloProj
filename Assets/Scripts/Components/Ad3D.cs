@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Sayollo.Components
 {
+    [AddComponentMenu("Sayollo/Ad/Ad3D")]
     [RequireComponent(typeof(MeshRenderer))]
     public class Ad3D : BaseAdComponent
     {
