@@ -44,7 +44,7 @@ namespace Sayollo.Core
             HttpClient httpClient = new HttpClient();
             try
             {
-                StringContent content = new StringContent("{}", Encoding.UTF8, "application/json");
+                StringContent content = new StringContent("{}");
                 HttpResponseMessage result = httpClient.PostAsync(URL, content).Result;
 
                 string responseFromServer = result.Content.ReadAsStringAsync().Result;
