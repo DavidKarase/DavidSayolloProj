@@ -77,7 +77,7 @@ namespace Sayollo.Core
             if (!storeView)
             {
                 GameObject store = Resources.Load(STORE_OBJECT) as GameObject;
-                UnityEngine.Object.Instantiate(store);
+                store = UnityEngine.Object.Instantiate(store);
                 storeView = store.GetComponent<StoreView>();
             }
             storeView.SetData(product);
